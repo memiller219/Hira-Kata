@@ -4,7 +4,7 @@
 > It utilizes both Hiragana and Katakana from the Japanese language, which you can choose from in the beginning.
 > Please enjoy!
 
-![demo](/images/demo.png)
+![demo](./images/demo.png)
 
 ## Instructions
 
@@ -13,4 +13,3 @@
 - Select the set of characters which will be used in the game.
 - Click on the cards to find a match.
 - When all cards are matched the game is over, and you win!
-# Hira-Kata

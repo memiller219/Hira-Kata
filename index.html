@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="jquery-3.3.1.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400"
+      rel="stylesheet"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <title>Hira-Kata</title>
+  </head>
+  <body>
+    <!-- Modal Section -->
+    <div class="container-fluid">
+      <div class="row">
+        <header>
+          <h1>Hira-Kata</h1>
+        </header>
+      </div>
+      <!-- Button to Open the Modal -->
+      <div class="row">
+        <button
+          type="button"
+          class="btn btn-primary play"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
+          Play!
+        </button>
+      </div>
+
+      <!-- The Modal -->
+      <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+              <h4 class="modal-title">Choose A Category</h4>
+              <button type="button" class="close" data-dismiss="modal">
+                &times;
+              </button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+              <div class="choices">
+                <div id="hiragana">Hiragana</div>
+                <div id="katakana">Katakana</div>
+              </div>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+              <button type="button" class="btn btn-danger" data-dismiss="modal">
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- End of modal section -->
+
+      <div class="row">
+        <div class="game-board hidden">
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+          <div class="cards play"></div>
+        </div>
+
+        <div class="selection hidden">
+          <p id="hira_picked">Hiragana</p>
+          <div class="hira_choice">
+            <div class="group" id="vowels">a, i, u, e, o</div>
+            <div class="group" id="ks">ka, ki, ku, ke, ko</div>
+            <div class="group" id="ss">sa, shi, su, se, so</div>
+            <div class="group" id="ts">ta, chi, tsu, te, to</div>
+            <div class="group" id="ns">na, ni, nu, ne, no</div>
+            <div class="group" id="hs">ha, hi, fu, he, ho</div>
+            <div class="group" id="ms">ma, mi, mu, me, mo</div>
+            <div class="group" id="ys">ya, yu, yo</div>
+            <div class="group" id="rs">ra, ri, ru, re, ro</div>
+            <div class="group" id="wsn">wa, wo, n</div>
+          </div>
+          <p id="kata_picked">Katakana</p>
+          <div class="kata_choice hidden selection">
+            <div class="group" id="kata_vowels">a, i, u, e, o</div>
+            <div class="group" id="kata_ks">ka, ki, ku, ke, ko</div>
+            <div class="group" id="kata_ss">sa, shi, su, se, so</div>
+            <div class="group" id="kata_ts">ta, chi, tsu, te, to</div>
+            <div class="group" id="kata_ns">na, ni, nu, ne, no</div>
+            <div class="group" id="kata_hs">ha, hi, fu, he, ho</div>
+            <div class="group" id="kata_ms">ma, mi, mu, me, mo</div>
+            <div class="group" id="kata_ys">ya, yu, yo</div>
+            <div class="group" id="kata_rs">ra, ri, ru, re, ro</div>
+            <div class="group" id="kata_wsn">wa, wo, n</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Play again section -->
+
+    <section id="post" class="hidden">
+      <div>
+        <p>Congratulations, You won the game!</p>
+        <br />
+        <a id="again" data-target="#">Play Again?</a>
+      </div>
+    </section>
+
+    <script src="script.js"></script>
+  </body>
+</html>
