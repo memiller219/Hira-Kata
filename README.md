@@ -4,7 +4,7 @@
 > It utilizes both Hiragana and Katakana from the Japanese language, which you can choose from in the beginning.
 > Please enjoy!
 
-![demo](./images/demo.png)
+![image](https://user-images.githubusercontent.com/42559041/55525010-58023e00-565d-11e9-917c-7232368e2afa.png)
 
 ## Instructions
 
