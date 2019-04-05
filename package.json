@@ -115,6 +115,10 @@
   "license": "MIT",
   "main": "dist/jquery.js",
   "name": "jquery",
+  "engines": {
+    "node": "10.14.1",
+    "npm": "6.4.1"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jquery/jquery.git"
