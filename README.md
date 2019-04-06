@@ -1,6 +1,6 @@
 # Hira-Kata
 
-> A simple JavaScript memory game.  
+> A simple Javascript memory game.  
 > It utilizes both Hiragana and Katakana from the Japanese language, which you can choose from in the beginning.
 > Please enjoy!
 
