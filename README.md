@@ -13,4 +13,3 @@
 - Select the set of characters which will be used in the game.
 - Click on the cards to find a match.
 - When all cards are matched the game is over, and you win!
-# Hira-Kata
