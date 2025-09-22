@@ -250,7 +250,7 @@ body::before {
 
 .card-front {
   background: #314432;
-  color: #fff;
+  color: #111;
   transform: rotateY(180deg);
 }
 
