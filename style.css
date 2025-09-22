@@ -1,213 +1,268 @@
-/* Global Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Fraunces", serif;
 }
 
+/* ===== BODY & BACKGROUND ===== */
 body {
-  font-family: "Montserrat", sans-serif;
-  height: 100vh;
-  background-image: url("https://raw.githubusercontent.com/memiller219/Hira-Kata/refs/heads/master/images/background.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: fixed;
+  margin: 0;
+  background: url("./images/bambooBackground.jpg") no-repeat center center fixed;
   background-size: cover;
-  display: flex;
-}
-
-header {
-  justify-content: center;
-  text-transform: uppercase;
-  color: whitesmoke;
-  margin: auto;
-}
-
-header h1 {
-  font-weight: 300;
-  font-size: 4rem;
-  border-bottom: 1px solid rgb(255, 255, 255);
-}
-
-/* Game board */
-.game-board {
-  width: 640px;
-  height: 600px;
-  margin: 10px auto;
-  display: flex;
-  flex-wrap: wrap;
-  perspective: 1000px;
-}
-
-.cards {
-  width: calc(25% - 20px);
-  height: calc(33% - 20px);
-  margin: auto;
   position: relative;
-  cursor: pointer;
-  transform-style: preserve-3d;
-  transition: transform 0.5s;
+  height: 100vh;
+  overflow-x: hidden;
 }
 
-.cards:active {
-  transform: scale(0.97);
-  transition: transform 0.2s;
-}
-
-.cards.flip {
-  transform: rotateY(180deg);
-}
-
-.cards .back {
-  background-image: url("https://raw.githubusercontent.com/memiller219/Hira-Kata/refs/heads/master/images/fill2.jpg");
-  background-size: cover;
-  background-position: 50% 50%;
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.cards .front {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  transform: rotateY(180deg);
-  backface-visibility: hidden;
-}
-
-/* Category Selection */
-.selection {
-  margin: auto;
-  width: 200px;
-}
-
-.group {
-  background: rgb(69, 156, 156);
-  color: #fff;
-  font-weight: 200;
-  margin-top: 10px;
-  padding: 5px;
-  box-shadow: 2px 2px 2px 1px rgba(255, 255, 255, 0.726);
-  cursor: pointer;
-  text-align: center;
-  border-radius: 1px;
-}
-
-.group:hover,
-.btn-primary:hover,
-.btn-danger:hover {
-  background: rgb(46, 102, 102);
-}
-
-.hidden {
-  display: none !important;
-}
-
-/* Buttons */
-.btn-primary {
-  font-family: "Montserrat", sans-serif;
-  background: rgb(69, 156, 156);
-  color: #fff;
-  font-size: 32px;
-  text-transform: uppercase;
-  border: none;
-  margin: 200px auto;
-}
-
-.btn-danger {
-  font-family: "Montserrat", sans-serif;
-  background: rgb(69, 156, 156);
-  border: none;
-  text-transform: uppercase;
-}
-
-/* Modal Body */
-.choices {
-  margin: auto;
-  text-align: center;
-  padding: 10px;
-}
-
-#hiragana,
-#katakana {
-  background: rgb(69, 156, 156);
-  color: #fff;
-  margin: 10px;
-  text-transform: uppercase;
-  font-weight: 200;
-  font-size: 1.5rem;
-  cursor: pointer;
-}
-
-#hira_picked,
-#kata_picked {
-  color: white;
-  margin: 20px;
-  text-align: center;
-  text-transform: uppercase;
-  font-size: 1.6rem;
-  border-bottom: 1px solid white;
-  font-weight: 100;
-}
-
-/* Post Game */
-#post {
+/* ===== OVERLAY ===== */
+body::before {
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
   width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.45);
+  z-index: 0;
+}
+
+/* ===== GAME CONTAINER ===== */
+.game-container {
+  position: relative;
+  z-index: 1;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 1rem;
+  color: #fff;
+}
+
+/* ===== HEADER ===== */
+.game-header h1 {
+  font-style: italic;
+  font-weight: 400;
+  color: #fdfdfd;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.7);
+}
+
+.subheader {
+  padding: 10px 0 25px 0;
+  font-weight: 200;
+  margin-bottom: 10px;
+  color: #ddd;
+}
+
+/* ====== BUTTONS ====== */
+.startBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  transition: 1s ease-in-out;
+}
+
+.startBtn svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: #fff;
+  stroke-dasharray: 150 480;
+  stroke-dashoffset: 150;
+  transition: stroke-dashoffset 1s ease-in-out;
+  pointer-events: none; /* lets clicks pass through */
+}
+
+.startBtn span {
+  position: relative;
+  color: white;
+  font-size: 18px;
+  font-weight: 300;
+  z-index: 1;
+}
+
+/* Hover effects */
+.startBtn:hover {
+  background: #d3d3d3;
+}
+
+.startBtn:hover span {
+  color: #111; /* contrast */
+}
+
+.startBtn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+
+.btn,
+.start-button {
+  background: #1C3738;
+  color: #f5f5dc; /* beige */
+  border: 2px solid #1b2d1b; /* dark forest green */
+  padding: 0.7rem 1.3rem;
+  margin: 0.4rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.btn:hover,
+.start-button:hover {
+  background: #1C3738; /* forest green */
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active,
+.start-button:active {
+  transform: scale(0.97);
+  box-shadow: none;
+}
+
+/* Highlight active selections */
+.set-btn.active,
+.language-btn.active {
+  background: #f5f5dc; /* beige */
+  color: #111;
+  border-color: #111;
+}
+
+/* ===== MODALS ===== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   justify-content: center;
   align-items: center;
-  background: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  background: rgba(0, 0, 0, 0.255);
 }
 
-#post > div {
-  width: 300px;
-  padding: 20px;
-  color: white;
-  background: rgb(69, 156, 156);
-  border-radius: 2px;
-  text-transform: uppercase;
-  font-size: 1.5rem;
-  font-weight: 100;
-  box-shadow: 2px 2px 2px 1px rgb(255, 255, 255);
+.modal-content {
+  background: #FFEDDF; /* beige base */
+  border: 3px solid #1C3738; /* forest green */
+  color: #1C3738;
+  padding: 2rem;
+  text-align: center;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
 }
 
-#again {
-  text-decoration: none;
-  color: white;
+.modal-content h2 {
+  font-weight: 300;
+  margin-bottom: 1rem;
+  color: #1b2d1b;
 }
 
-#again:hover {
-  color: rgb(46, 102, 102);
+.modal.show {
+  display: flex;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ===== LANGUAGE & SET SELECTION LAYOUT ===== */
+.language-select,
+.set-options {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.language-select .btn,
+.set-options .btn {
+  min-width: 100px;
+}
+
+/* ===== GAME BOARD ===== */
+.game-board {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+/* ===== CARD ===== */
+.card {
+  position: relative;
+  width: 100%;
+  padding-top: 100%;
   cursor: pointer;
+  perspective: 1000px;
 }
 
-/* Responsive */
-@media only screen and (max-width: 600px) {
-  header h1 {
-    font-size: 40px;
-    margin: 20px 0px;
-  }
+.card-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
 
-  .modal-header h4 {
-    font-size: 20px;
-  }
+.card.flipped .card-inner {
+  transform: rotateY(180deg);
+}
 
-  .modal-content {
-    margin: 0px 20px;
-  }
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
 
-  .game-board {
-    margin: 60px 20px;
-  }
+.card-back {
+  background-size: 20px 20px;
+  background:#d3d3d36a;
+}
 
-  .cards {
-    width: calc(25% - 8px);
-    height: calc(25% - 8px);
-    margin: 5px auto;
-  }
+.card-front {
+  background: #314432;
+  color: #fff;
+  transform: rotateY(180deg);
+}
+
+/* ====== WIN MODAL ====== */
+#winModal.show {
+  display: flex;
+}
+
+#winModal .modal-content {
+  background: #fff;
+  border: 3px solid #1b2d1b;
+  color: #111;
+  padding: 2rem;
+  max-width: 300px;
 }

@@ -3,126 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <script src="jquery-3.3.1.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css" />
     <title>Hira-Kata</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Modal Section -->
-    <div class="container-fluid">
-      <div class="row">
-        <header>
-          <h1>Hira-Kata</h1>
-        </header>
-      </div>
-      <!-- Button to Open the Modal -->
-      <div class="row">
-        <button
-          type="button"
-          class="btn btn-primary play"
-          data-toggle="modal"
-          data-target="#myModal"
-        >
-          Play!
-        </button>
-      </div>
+    <div class="game-container">
+      <!-- Header -->
+      <header class="game-header" id="gameHeader">
+        <h1>Hira-Kata</h1>
+        <p class="subheader">Match the characters and master your kana</p>
+      </header>
 
-      <!-- The Modal -->
-      <div class="modal fade" id="myModal">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <h4 class="modal-title">Choose A Category</h4>
-              <button type="button" class="close" data-dismiss="modal">
-                &times;
-              </button>
-            </div>
+      <!-- Start Button -->
+      <button id="startGameBtn" class="startBtn">
+        <svg width="180px" height="60px" viewBox="0 0 180 60" class="border">
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="bg-line" />
+          <polyline points="179,1 179,59 1,59 1,1 179,1" class="hl-line" />
+        </svg>
+        <span>Play Now</span>
+      </button>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-              <div class="choices">
-                <div id="hiragana">Hiragana</div>
-                <div id="katakana">Katakana</div>
-              </div>
-            </div>
+      <!-- Modal for Game Settings -->
+      <div id="gameSettings" class="modal">
+        <div class="modal-content">
+          <h2>Choose Your Path</h2>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-              <button type="button" class="btn btn-danger" data-dismiss="modal">
-                Close
-              </button>
+          <!-- Language Selection -->
+          <div class="language-select">
+            <button class="btn language-btn" id="hiraganaBtn">Hiragana</button>
+            <button class="btn language-btn" id="katakanaBtn">Katakana</button>
+          </div>
+
+          <!-- Set Selection -->
+          <div id="sets" class="hidden">
+            <h2>Select a Set</h2>
+            <div class="set-options">
+              <button class="btn set-btn" data-set="vowels">Vowels</button>
+              <button class="btn set-btn" data-set="ks">K's</button>
+              <button class="btn set-btn" data-set="ss">S's</button>
+              <button class="btn set-btn" data-set="ts">T's</button>
+              <button class="btn set-btn" data-set="ns">N's</button>
+              <button class="btn set-btn" data-set="hs">H's</button>
+              <button class="btn set-btn" data-set="ms">M's</button>
+              <button class="btn set-btn" data-set="ys">Y's</button>
+              <button class="btn set-btn" data-set="rs">R's</button>
+              <button class="btn set-btn" data-set="wsn">W & N</button>
             </div>
           </div>
+
+          <!-- Confirm Play Button -->
+          <button id="confirmPlayBtn" class="start-button hidden">
+            Start Game
+          </button>
+          <br />
+          <button id="closeModalBtn" class="btn">Close</button>
         </div>
       </div>
 
-      <!-- End of modal section -->
+      <!-- Game Board -->
+      <div id="gameBoard" class="game-board hidden"></div>
 
-      <div class="row">
-        <div class="game-board hidden">
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-          <div class="cards"></div>
-        </div>
-
-        <div class="selection hidden">
-          <p id="hira_picked">Hiragana</p>
-          <div class="hira_choice">
-            <div class="group" id="vowels">a, i, u, e, o</div>
-            <div class="group" id="ks">ka, ki, ku, ke, ko</div>
-            <div class="group" id="ss">sa, shi, su, se, so</div>
-            <div class="group" id="ts">ta, chi, tsu, te, to</div>
-            <div class="group" id="ns">na, ni, nu, ne, no</div>
-            <div class="group" id="hs">ha, hi, fu, he, ho</div>
-            <div class="group" id="ms">ma, mi, mu, me, mo</div>
-            <div class="group" id="ys">ya, yu, yo</div>
-            <div class="group" id="rs">ra, ri, ru, re, ro</div>
-            <div class="group" id="wsn">wa, wo, n</div>
-          </div>
-          <p id="kata_picked">Katakana</p>
-          <div class="kata_choice hidden selection">
-            <div class="group" id="kata_vowels">a, i, u, e, o</div>
-            <div class="group" id="kata_ks">ka, ki, ku, ke, ko</div>
-            <div class="group" id="kata_ss">sa, shi, su, se, so</div>
-            <div class="group" id="kata_ts">ta, chi, tsu, te, to</div>
-            <div class="group" id="kata_ns">na, ni, nu, ne, no</div>
-            <div class="group" id="kata_hs">ha, hi, fu, he, ho</div>
-            <div class="group" id="kata_ms">ma, mi, mu, me, mo</div>
-            <div class="group" id="kata_ys">ya, yu, yo</div>
-            <div class="group" id="kata_rs">ra, ri, ru, re, ro</div>
-            <div class="group" id="kata_wsn">wa, wo, n</div>
-          </div>
+      <!-- Win Modal -->
+      <div id="winModal" class="modal hidden">
+        <div class="modal-content">
+          <h2>You Won!</h2>
+          <p>Great job matching all the cards.</p>
+          <button id="playAgainBtn" class="btn">Play Again</button>
         </div>
       </div>
     </div>
-
-    <!-- Play again section -->
-    <section id="post" class="hidden">
-      <div>
-        <p>Congratulations, You won the game!</p>
-        <br />
-        <a id="again" data-target="#">Play Again?</a>
-      </div>
-    </section>
 
     <script src="script.js"></script>
   </body>
