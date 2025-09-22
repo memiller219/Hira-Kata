@@ -9,7 +9,8 @@
 body {
   font-family: "Montserrat", sans-serif;
   height: 100vh;
-  background-image: url("/images/background.jpg");
+  background-image: url("https://github.com/memiller219/Hira-Kata/blob/master/images/background.jpg");
+
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed;
