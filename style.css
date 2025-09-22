@@ -8,7 +8,8 @@
 /* ===== BODY & BACKGROUND ===== */
 body {
   margin: 0;
-  background: url("./images/bambooBackground.jpg") no-repeat center center fixed;
+  background: url("https://raw.githubusercontent.com/memiller219/Hira-Kata/refs/heads/master/images/bambooBackground.jpg")
+    no-repeat center center fixed;
   background-size: cover;
   position: relative;
   height: 100vh;
@@ -106,10 +107,9 @@ body::before {
   stroke-dashoffset: -480;
 }
 
-
 .btn,
 .start-button {
-  background: #1C3738;
+  background: #1c3738;
   color: #f5f5dc; /* beige */
   border: 2px solid #1b2d1b; /* dark forest green */
   padding: 0.7rem 1.3rem;
@@ -124,7 +124,7 @@ body::before {
 
 .btn:hover,
 .start-button:hover {
-  background: #1C3738; /* forest green */
+  background: #1c3738; /* forest green */
   color: #fff;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
@@ -159,9 +159,9 @@ body::before {
 }
 
 .modal-content {
-  background: #FFEDDF; /* beige base */
-  border: 3px solid #1C3738; /* forest green */
-  color: #1C3738;
+  background: #ffeddf; /* beige base */
+  border: 3px solid #1c3738; /* forest green */
+  color: #1c3738;
   padding: 2rem;
   text-align: center;
   max-width: 400px;
@@ -245,12 +245,12 @@ body::before {
 
 .card-back {
   background-size: 20px 20px;
-  background:#d3d3d36a;
+  background: #d3d3d36a;
 }
 
 .card-front {
   background: #314432;
-  color: #111;
+  color: #fff;
   transform: rotateY(180deg);
 }
 
