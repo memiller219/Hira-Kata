@@ -59,7 +59,7 @@ header h1 {
 }
 
 .cards .back {
-  background-image: url("/images/newcard.jpg");
+  background-image: url("https://raw.githubusercontent.com/memiller219/Hira-Kata/refs/heads/master/images/newcard.jpg");
   background-size: cover;
   background-position: 50% 50%;
   width: 100%;
